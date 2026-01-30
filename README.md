@@ -77,3 +77,8 @@ Known Limitations:
   UI is optimized for phones; tablet-specific layouts are not implemented
   
   Minimal animations to prioritize performance and stability
+
+
+Demo:
+
+https://github.com/Milan5268/anime-hub/blob/master/Demo%20(1).mp4
