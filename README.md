@@ -78,7 +78,13 @@ Known Limitations:
   
   Minimal animations to prioritize performance and stability
 
+  No Splash screen
+
 
 Demo:
 
 https://github.com/Milan5268/anime-hub/blob/master/Demo%20(1).mp4
+
+Apk:
+
+https://github.com/Milan5268/anime-hub/blob/master/AnimeHub.apk
