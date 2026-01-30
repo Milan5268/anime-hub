@@ -43,6 +43,7 @@ Offline & Sync:
   
   Snackbar notifications when switching between offline and online states
 
+
 Architecture & Tech Stack:
 
   MVVM architecture
@@ -60,3 +61,19 @@ Architecture & Tech Stack:
   Jetpack Compose for UI
   
   Clean separation of concerns and test-friendly design
+
+
+
+Known Limitations:
+
+  No pagination or infinite scrolling for anime list
+  
+  No search or filter functionality
+  
+  Trailer playback is external due to YouTube streaming restrictions
+  
+  No manual refresh button (refresh happens automatically on reconnect)
+  
+  UI is optimized for phones; tablet-specific layouts are not implemented
+  
+  Minimal animations to prioritize performance and stability
