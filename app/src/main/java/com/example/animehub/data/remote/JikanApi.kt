@@ -1,4 +1,4 @@
-package com.example.animehub.core.network
+package com.example.animehub.data.remote
 
 import com.example.animehub.data.remote.dto.AnimeDetailResponse
 import com.example.animehub.data.remote.dto.TopAnimeResponse

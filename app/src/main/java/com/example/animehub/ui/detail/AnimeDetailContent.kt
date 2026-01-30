@@ -1,8 +1,5 @@
 package com.example.animehub.ui.detail
 
-import android.content.ActivityNotFoundException
-import android.content.Context
-import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -30,14 +27,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.animehub.domain.model.AnimeDetail
-import androidx.core.net.toUri
+import com.example.animehub.domain.model.Anime
 import com.example.animehub.core.util.YouTubeUtil.extractYoutubeId
 import com.example.animehub.core.util.YouTubeUtil.openYouTube
 
 @Composable
 fun AnimeDetailContent(
-    anime: AnimeDetail
+    anime: Anime,
+    isOnline: Boolean,
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
@@ -45,15 +42,16 @@ fun AnimeDetailContent(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
 
-        // 🎬 Trailer OR Poster
+        // Trailer OR Poster
         item {
             MediaSection(
                 trailerUrl = anime.trailerUrl,
-                posterUrl = anime.posterUrl
+                posterUrl = anime.posterUrl,
+                isOnline = isOnline
             )
         }
 
-        // 📌 Title
+        // Title
         item {
             Text(
                 text = anime.title,
@@ -61,7 +59,7 @@ fun AnimeDetailContent(
             )
         }
 
-        // ⭐ Rating & Episodes
+        // Rating & Episodes
         item {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
@@ -71,17 +69,17 @@ fun AnimeDetailContent(
             }
         }
 
-        // 🧠 Synopsis
+        // Synopsis
         item {
             Section(title = "Synopsis", content = anime.synopsis)
         }
 
-        // 🏷 Genres
+        // Genres
         item {
             Section(title = "Genres", content = anime.genres)
         }
 
-        // 👥 Cast
+        // Cast
         item {
             Section(title = "Main Cast", content = anime.cast)
         }
@@ -91,7 +89,8 @@ fun AnimeDetailContent(
 @Composable
 fun MediaSection(
     trailerUrl: String?,
-    posterUrl: String?
+    posterUrl: String?,
+    isOnline: Boolean
 ) {
     Box(
         modifier = Modifier
@@ -100,14 +99,15 @@ fun MediaSection(
             .clip(RoundedCornerShape(12.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)
     ) {
-        TrailerSection(trailerUrl, posterUrl)
+        TrailerSection(trailerUrl, posterUrl, isOnline)
     }
 }
 
 @Composable
 fun TrailerSection(
     youtubeUrl: String?,
-    posterUrl: String?
+    posterUrl: String?,
+    isOnline: Boolean
 ) {
     val context = LocalContext.current
 
@@ -119,7 +119,7 @@ fun TrailerSection(
     ) {
         PosterImage(posterUrl)
 
-        if (youtubeUrl != null) {
+        if (youtubeUrl != null && isOnline) {
             IconButton(
                 onClick = {
                     openYouTube(context, youtubeId = extractYoutubeId(youtubeUrl))

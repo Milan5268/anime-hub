@@ -27,6 +27,15 @@ data class AnimeDetailDto(
     val characters: List<CharacterDto>?
 )
 
+data class ImagesDto(
+    val jpg: JpgDto
+)
+
+data class JpgDto(
+    @SerializedName("large_image_url")
+    val imageUrl: String?
+)
+
 data class GenreDto(
     val name: String
 )

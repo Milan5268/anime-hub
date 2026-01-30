@@ -1,25 +1,21 @@
 package com.example.animehub.ui.home.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.animehub.core.NetworkMonitor
-import com.example.animehub.data.remote.dto.TopAnimeResponse
+import com.example.animehub.core.network.NetworkMonitor
 import com.example.animehub.domain.model.Anime
-import com.example.animehub.domain.model.Resource
+import com.example.animehub.core.util.Resource
 import com.example.animehub.domain.repository.AnimeHubRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AnimeHubViewModel @Inject constructor(
-    private val repository: AnimeHubRepository,
-    private val networkMonitor: NetworkMonitor
+class AnimeListViewModel @Inject constructor(
+    repository: AnimeHubRepository,
+    networkMonitor: NetworkMonitor
 ): ViewModel() {
 
     // UI data state

@@ -10,26 +10,18 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface AnimeDao {
 
-    /* ---------------- LIST ---------------- */
-
+    //LIST
     @Query("SELECT * FROM anime ORDER BY rating DESC")
     fun observeAllAnime(): Flow<List<AnimeEntity>>
 
-    /* ---------------- DETAIL ---------------- */
-
+    //DETAIL
     @Query("SELECT * FROM anime WHERE id = :animeId")
     fun observeAnimeById(animeId: Int): Flow<AnimeEntity?>
 
-    /* ---------------- INSERT / UPDATE ---------------- */
-
+    //INSERT / UPDATE
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAnimeList(animeList: List<AnimeEntity>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAnime(anime: AnimeEntity)
-
-    /* ---------------- UTIL ---------------- */
-
-    @Query("DELETE FROM anime")
-    suspend fun clearAll()
 }

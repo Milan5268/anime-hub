@@ -1,7 +1,7 @@
 package com.example.animehub.di
 
 import android.content.Context
-import com.example.animehub.core.NetworkMonitor
+import com.example.animehub.core.network.NetworkMonitor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

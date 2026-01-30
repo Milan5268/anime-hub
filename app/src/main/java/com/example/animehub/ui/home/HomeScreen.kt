@@ -23,13 +23,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.animehub.domain.model.Anime
-import com.example.animehub.domain.model.Resource
-import com.example.animehub.ui.home.viewmodel.AnimeHubViewModel
+import com.example.animehub.core.util.Resource
+import com.example.animehub.ui.home.viewmodel.AnimeListViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    viewModel: AnimeHubViewModel = hiltViewModel(),
+    viewModel: AnimeListViewModel = hiltViewModel(),
     onAnimeClick: (Int) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -78,16 +78,24 @@ fun HomeScreen(
                 }
 
                 is Resource.Success -> {
-                    AnimeList(
-                        animeList = (uiState as Resource.Success<List<Anime>>).data,
-                        onAnimeClick = onAnimeClick
-                    )
+                    val list =
+                        (uiState as Resource.Success<List<Anime>>).data
+
+                    if (list.isEmpty()) {
+                        EmptyState(
+                            message = "No anime available"
+                        )
+                    } else {
+                        AnimeList(
+                            animeList = list,
+                            onAnimeClick = onAnimeClick
+                        )
+                    }
                 }
 
                 is Resource.Error -> {
-                    Text(
-                        text = (uiState as Resource.Error).message,
-                        modifier = Modifier.align(Alignment.Center)
+                    EmptyState(
+                        message = (uiState as Resource.Error).message
                     )
                 }
             }

@@ -44,7 +44,7 @@ fun AnimeCard(
             verticalAlignment = Alignment.CenterVertically
         ) {
 
-            // Poster / Placeholder
+            // Poster
             Box(
                 modifier = Modifier
                     .size(72.dp)
@@ -80,12 +80,12 @@ fun AnimeCard(
                 )
 
                 Text(
-                    text = "⭐ ${anime.ratingText}",
+                    text = "⭐ ${anime.rating}",
                     style = MaterialTheme.typography.bodyMedium
                 )
 
                 Text(
-                    text = "${anime.episodesText} episodes",
+                    text = "${anime.episodes} episodes",
                     style = MaterialTheme.typography.bodySmall
                 )
             }

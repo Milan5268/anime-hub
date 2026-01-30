@@ -1,7 +1,7 @@
 package com.example.animehub.di
 
 import android.content.Context
-import com.example.animehub.core.network.JikanApi
+import com.example.animehub.data.remote.JikanApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

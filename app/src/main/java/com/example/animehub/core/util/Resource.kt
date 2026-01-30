@@ -1,4 +1,4 @@
-package com.example.animehub.domain.model
+package com.example.animehub.core.util
 
 sealed class Resource<out T> {
     object Loading : Resource<Nothing>()

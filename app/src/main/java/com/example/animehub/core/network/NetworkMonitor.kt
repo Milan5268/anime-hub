@@ -1,4 +1,4 @@
-package com.example.animehub.core
+package com.example.animehub.core.network
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -19,6 +19,7 @@ class NetworkMonitor @Inject constructor(
 ) {
     private val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
 
     val isOnline: Flow<Boolean> = callbackFlow {
         val callback = object : ConnectivityManager.NetworkCallback() {
@@ -51,4 +52,3 @@ class NetworkMonitor @Inject constructor(
         return caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
 }
-

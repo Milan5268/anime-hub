@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime)
+    implementation(libs.androidx.animation)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -62,49 +63,44 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     // Core
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation(libs.kotlinx.coroutines.android)
 
-// Retrofit + OkHttp
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
-
-
-// Hilt
-    implementation("com.google.dagger:hilt-android:2.52")
-    kapt("com.google.dagger:hilt-compiler:2.52")
-    implementation("androidx.hilt:hilt-navigation-compose:1.1.0") // if using Compose
-
-// Room
-    implementation("androidx.room:room-runtime:2.8.4")
-    kapt("androidx.room:room-compiler:2.8.4")
-    implementation("androidx.room:room-ktx:2.8.4")
-
-// Lifecycle
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.0")
-
-// Compose (if using Compose UI)
-//    implementation(platform("androidx.compose:compose-bom:2024.01.00"))
-//    implementation("androidx.compose.ui:ui")
-//    implementation("androidx.compose.material3:material3")
-//    implementation("androidx.compose.ui:ui-tooling-preview")
-//    debugImplementation("androidx.compose.ui:ui-tooling")
-//    implementation("androidx.activity:activity-compose:1.8.2")
-
-// Image Loading (Compose)
-    implementation("io.coil-kt:coil-compose:2.7.0")
+    // Retrofit + OkHttp
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
 
 
-// ExoPlayer (Media3)
-    implementation("androidx.media3:media3-exoplayer:1.9.1")
-    implementation("androidx.media3:media3-ui:1.9.1")
+    // Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 
-// Navigation (Compose)
-    implementation("androidx.navigation:navigation-compose:2.9.7")
+    // Room
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 
-    implementation("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.9.0")
+    // Lifecycle
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+
+
+    // Image Loading (Compose)
+    implementation(libs.coil.compose)
+
+
+    // ExoPlayer (Media3)
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.ui)
+
+    // Navigation (Compose)
+    implementation(libs.androidx.navigation.compose)
+
+    // Animation
+    implementation(libs.androidx.animation)
+
 
 
 }

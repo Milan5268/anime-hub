@@ -1,7 +1,7 @@
 package com.example.animehub.di
 
-import com.example.animehub.core.NetworkMonitor
-import com.example.animehub.core.network.JikanApi
+import com.example.animehub.core.network.NetworkMonitor
+import com.example.animehub.data.remote.JikanApi
 import com.example.animehub.data.local.dao.AnimeDao
 import com.example.animehub.data.repository.AnimeHubRepositoryImpl
 import com.example.animehub.domain.repository.AnimeHubRepository
